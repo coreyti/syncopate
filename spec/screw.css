@@ -1,0 +1,60 @@
+body {
+  font-family   : Verdana, "MS Trebuchet", sans-serif;
+/*  font-family   : Monaco, monospace;*/
+  font-size     : 12px;
+  color         : #333;
+  margin        : 0;
+  padding       : 0;
+}
+
+td#screw_unit_controls {
+  width         : 30%;
+}
+
+div#test_content {
+/*  display       : none;*/
+}
+
+ul.descriptions,
+ul.child_descriptions {
+  background    : #FFF;
+}
+
+li.description {
+  border        : none;
+}
+
+li.description > span {
+  font-style    : italic;
+}
+
+li.example {
+  padding       : 0;
+}
+
+li.example.passed,
+li.example.failed {
+  background    : transparent;
+}
+
+li.example:before {
+  content       : ".";
+  display       : inline-block;
+  width         : 10px;
+  margin        : 0 4px;
+}
+
+li.example.passed:before {
+  background    : green;
+  color         : green;
+}
+
+li.example.failed:before {
+  background    : red;
+  color         : red;
+}
+
+code {
+  color         : #333;
+  background    : #DDD;
+}

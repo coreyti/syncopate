@@ -1,0 +1,6 @@
+[submodule "vendor/disco"]
+	path = vendor/disco
+	url = git@github.com:coreyti/disco.git
+[submodule "vendor/screw-unit"]
+	path = vendor/screw-unit
+	url = git@github.com:coreyti/screw-unit.git

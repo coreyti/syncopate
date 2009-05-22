@@ -1,0 +1,104 @@
+body {
+  font            : normal normal normal 10px Verdana, sans-serif;
+  color           : #666;
+  margin          : 0;
+}
+
+form {
+  width           : 100%;
+  margin          : 20px 0;
+}
+
+form > ul {
+  margin          : 0 auto;
+  width           : 80%;
+  list-style      : none;
+}
+
+form > ul > li {
+  display         : block;
+  float           : left;
+  width           : 50%;
+}
+
+form > ul > li > div {
+  padding         : 10px;
+}
+
+textarea,
+div.syncopated {
+  display         : block;
+}
+
+textarea,
+div.syncopated > div.container {
+  margin          : 10px 0;
+  padding         : 0;
+  border          : 1px solid #999;
+}
+
+textarea,
+div.syncopated > div.container iframe {
+  width           : 100%;
+  height          : 300px;
+}
+
+div.syncopated > div.container iframe {
+  border          : 0px none transparent;
+}
+
+div.syncopated > ul.toolbar {
+  height          : 16px;
+  margin          : 10px 0 0;
+  padding         : 2px;
+  overflow        : hidden;
+  list-style      : none;
+  border          : 1px solid #999;
+  border-radius         : 10px;
+  -moz-border-radius    : 10px;
+  -webkit-border-radius : 10px;
+}
+
+div.syncopated > ul.toolbar > li.button,
+div.syncopated > ul.toolbar > li.separator {
+  background      : no-repeat 0 0;
+  width           : 16px;
+  height          : 16px;
+  margin          : 0 2px;
+  float           : left;
+}
+
+div.syncopated > ul.toolbar > li.button {
+  cursor          : pointer;
+}
+
+div.syncopated > ul.toolbar > li.button > a {
+  width           : 16px;
+  height          : 16px;
+  display         : block;
+  visibility      : hidden;
+}
+
+div.syncopated > ul.toolbar > li.separator {
+  background-image: none;
+}
+
+div.syncopated > ul.toolbar > li.bold {
+  background-image: url(images/text_bold.png);
+}
+
+div.syncopated > ul.toolbar > li.italic {
+  background-image: url(images/text_italic.png);
+}
+
+div.syncopated > ul.toolbar > li.underline {
+  background-image: url(images/text_underline.png);
+}
+
+div.syncopated > ul.toolbar > li.indent {
+  background-image: url(images/text_indent.png);
+}
+
+div.syncopated > ul.toolbar > li.outdent {
+  background-image: url(images/text_indent_remove.png);
+}

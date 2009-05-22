@@ -1,0 +1,42 @@
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>syncopate | a simple RTE</title>
+  <link rel="stylesheet" href="index.css" type="text/css" media="screen" />
+  <script src="../lib/jquery.js" type="text/javascript"></script>
+  <script src="../lib/disco.js" type="text/javascript"></script>
+  <script src="../lib/syncopate.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(function() {
+      $('textarea.syncopate').syncopate({
+        commands : [
+          ['bold', 'italic', 'underline'],
+          ['indent', 'outdent']
+        ]
+      });
+
+      $('a.toggle').click(function() {
+        $(this).next('textarea').slideToggle('fast');
+      });
+    })
+  </script>
+</head>
+<body>
+  <form action="#">
+    <ul>
+      <li>
+        <div>
+          <a href="#" class="toggle">show/hide textarea</a>
+          <textarea class='syncopate'>editor one</textarea>
+        </div>
+      </li>
+      <li>
+        <div>
+          <a href="#" class="toggle">show/hide textarea</a>
+          <textarea class='syncopate'>editor two</textarea>
+        </div>
+      </li>
+    </ul>
+  </form>
+</body>
+</html>
