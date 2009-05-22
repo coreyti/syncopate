@@ -163,6 +163,56 @@ Screw.Unit(function(c) { with(c) {
       });
     });
 
+    describe("#refresh", function() {
+      var syncopated, textarea, iframe, editor;
+
+      before(function() {
+        textarea   = view.children('textarea');
+        syncopated = Disco.build($.Syncopate, { textarea: textarea });
+        syncopated.load();
+
+        iframe = view.find('iframe');
+        editor = $(iframe[0].contentWindow.document); // (frame.contentDocument || frame.document)
+      });
+
+      describe("invocation", function() {
+        var called, original;
+
+        before(function() {
+          called   = false;
+          original = syncopated.refresh;
+
+          syncopated.refresh = function() {
+            called = true;
+          };
+        });
+
+        it("happens on 'blur' of the editor's iframe document", function() {
+          editor.trigger('blur');
+          expect(called).to(be_true);
+        });
+      });
+
+      describe("behavior", function() {
+        before(function() {
+          textarea.val('');
+        });
+
+        it("updates the textarea with the HTML content from the iframe document", function() {
+          syncopated.refresh();
+          expect(textarea.val()).to(equal, 'plain text content');
+        });
+
+        it("triggers a 'change' event on the textarea", function() {
+          var event_target;
+          textarea.bind('change', function(e) { event_target = $(e.target); });
+
+          syncopated.refresh();
+          expect(event_target.val()).to(equal, 'plain text content');
+        });
+      });
+    });
+
     describe("jQuery.fn.clone(...)", function() {
       var content;
 
