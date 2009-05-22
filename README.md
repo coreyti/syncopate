@@ -43,4 +43,11 @@ For your own site,
         });
 
 
+*reach out (i'll be there)*
+-------------------------------------------------------------------------------
+
+Found an issue?  Let us know (in GitHub's issue tracker)!
+
+
+
 [blab]: http://pivotallabs.com/users/corey/blog/articles/860-javascript-snacks-nibble-1-rte-wysiwyg-is-built-in-to-your-browser "Javascript Snacks, Nibble #1: RTE/WYSIWYG is Built in to your Browser"
