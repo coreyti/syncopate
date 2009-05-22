@@ -28,8 +28,8 @@ Hey, you wanna *get down tonight*? Check out:
 For your own site,
 
   * copy and reference:
-    * `lib/jquery.js`  *(careful, it's a symlink)*
-    * `lib/disco.js`   *(careful, it's a symlink)*
+    * `lib/jquery.js`
+    * `lib/disco.js`
     * `lib/sycopate.js`
   * get your groove on:
 
