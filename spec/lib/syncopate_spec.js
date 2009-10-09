@@ -5,6 +5,9 @@ Screw.Unit(function(c) { with(c) {
       ['bold', 'italic', 'underline'],
       ['indent', 'outdent']
     ];
+    var commands_with_arguments = [
+      [['heading', 'H1']]
+    ];
 
     before(function() {
       view = Disco.build(function(builder) {
@@ -66,7 +69,7 @@ Screw.Unit(function(c) { with(c) {
         });
       });
 
-      describe("given a 'commands' template", function() {
+      describe("given a 'commands' template with no arguments", function() {
         var syncopated, toolbar;
 
         before(function() {
@@ -90,6 +93,38 @@ Screw.Unit(function(c) { with(c) {
               describe("the generated " + button_type + " command button", function() {
                 it("exists", function() {
                   expect(toolbar.find('li.button.' + button_type).length).to(equal, 1);
+                });
+
+                it("when clicked, sends a '" + button_type + "' command to the iframe document", function() {
+
+                });
+              });
+            });
+          });
+        });
+      });
+
+      describe("given a 'commands' template with arguments", function() {
+        var syncopated, toolbar;
+
+        before(function() {
+          syncopated = Disco.build($.Syncopate, {
+            textarea : view.children('textarea'),
+            commands : commands_with_arguments
+          });
+
+          toolbar = view.find('ul.toolbar');
+        });
+
+        describe("the 'syncopated' editor's toolbar", function() {
+          $.each(commands_with_arguments, function() {
+            $.each(this, function() {
+              var button_type = this;
+              var css_class = this.join("_");
+
+              describe("the generated " + button_type + " command button", function() {
+                it("joins the array elements with an underscore", function() {
+                  expect(toolbar.find('li.button.' + css_class).length).to(equal, 1);
                 });
 
                 it("when clicked, sends a '" + button_type + "' command to the iframe document", function() {
