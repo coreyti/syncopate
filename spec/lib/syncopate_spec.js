@@ -94,10 +94,6 @@ Screw.Unit(function(c) { with(c) {
                 it("exists", function() {
                   expect(toolbar.find('li.button.' + button_type).length).to(equal, 1);
                 });
-
-                it("when clicked, sends a '" + button_type + "' command to the iframe document", function() {
-
-                });
               });
             });
           });
@@ -125,10 +121,6 @@ Screw.Unit(function(c) { with(c) {
               describe("the generated " + button_type + " command button", function() {
                 it("joins the array elements with an underscore", function() {
                   expect(toolbar.find('li.button.' + css_class).length).to(equal, 1);
-                });
-
-                it("when clicked, sends a '" + button_type + "' command to the iframe document", function() {
-
                 });
               });
             });
