@@ -132,19 +132,17 @@ Screw.Unit(function(c) { with(c) {
     describe("#load", function() {
       var syncopated, textarea;
 
-      before(function() {
-        textarea   = view.children('textarea');
-        syncopated = Disco.build($.Syncopate, {
-          textarea: textarea,
-          commands: commands
-        });
-        syncopated.load();
-      });
-
       describe("the 'syncopated' editor's iframe document", function() {
         var iframe, editor;
 
         before(function() {
+          textarea   = view.children('textarea');
+          syncopated = Disco.build($.Syncopate, {
+            textarea: textarea,
+            commands: commands
+          });
+          syncopated.load();
+
           iframe = view.find('iframe');
           editor = $(iframe[0].contentWindow.document); // (frame.contentDocument || frame.document)
         });
@@ -159,7 +157,16 @@ Screw.Unit(function(c) { with(c) {
         });
       });
 
-      describe("the 'syncopated' editor's toolbar", function() {
+      describe("the 'syncopated' editor's toolbar with commands with no arguments", function() {
+        before(function() {
+          textarea   = view.children('textarea');
+          syncopated = Disco.build($.Syncopate, {
+            textarea: textarea,
+            commands: commands
+          });
+          syncopated.load();
+        });
+        
         $.each(commands, function() {
           $.each(this, function() {
             var button_type = this;
@@ -183,6 +190,48 @@ Screw.Unit(function(c) { with(c) {
               it("sends a '" + button_type + "' command to the iframe document", function() {
                 view.find('li.button.' + button_type).mousedown();
                 expect(parameters[0]).to(equal, button_type);
+              });
+            });
+          });
+        });
+      });
+
+      describe("the 'syncopated' editor's toolbar with comamnds with arguments", function() {
+        before(function() {
+          textarea   = view.children('textarea');
+          syncopated = Disco.build($.Syncopate, {
+            textarea: textarea,
+            commands: commands_with_arguments
+          });
+          syncopated.load();
+        });
+                
+        $.each(commands_with_arguments, function() {
+          $.each(this, function() {
+            var css_class = this.join("_");
+            var button_type = this[0];
+            var argument = this[1];
+
+            describe("clicking the generated " + button_type + " command button", function() {
+              var iframe, original, parameters;
+
+              before(function() {
+                iframe = view.find('iframe');
+                original = iframe[0].contentWindow.document.execCommand;
+
+                iframe[0].contentWindow.document.execCommand = function() {
+                  parameters = arguments;
+                };
+              });
+
+              after(function() {
+                iframe[0].contentWindow.document.execCommand = original;
+              });
+
+              it("sends a '" + button_type + "' command to the iframe document", function() {
+                view.find('li.button.' + css_class).mousedown();
+                expect(parameters[0]).to(equal, button_type);
+                expect(parameters[2]).to(equal, argument);
               });
             });
           });
